@@ -1,0 +1,28 @@
+<h1>Criar novo Supervisor</h1>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'empregado:criarSupervisor' %}" method="post">
+{% csrf_token %}
+        <div class="nome_completo">
+            <label>Nome Completo:</label>
+            <input type="text" name="nome_completo" id="nome_completo" required/>
+        </div>
+        <div>
+            <label>Nome de Usuário:</label>
+            <input type="text" name="nome_de_usuario" id="nome_de_usuario" required/>
+        </div>
+        <div>
+            <label>E-mail:</label>
+            <input type="text" name="email" id="email" required/>
+        </div>
+        <div>
+            <label>Senha:</label>
+            <input type="password" name="password" id="password" required/>
+        </div>
+        <div>
+            <input align="left" type="submit" value="Create" />
+            <a href="{% url 'empregado:supervisores' %}" class="btn">Cancel</a>
+        </div>
+</form>
+<script src="{{STATIC_URL|default:'/static/'}}footer.html"></script>

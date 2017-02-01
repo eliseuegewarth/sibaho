@@ -1,0 +1,43 @@
+<body>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+    <div class="page-header">
+        <h1><a class="button" href="/">SiBaHo <span>Sistema de Banco de Horas</span></a></h1>
+    </div>
+    <div id="page-wrapper">
+        <header id="header" class="alt">
+            <nav id="nav">
+                <ul>
+                    <li class="current"><a href="{% url 'empregado:index' %}">Bem Vindo </a></li>
+                    <li class="submenu">
+                        <a href="#">Site</a>
+                        <ul>
+                            <li><a href="{% url 'empregado:supervisores' %}">Supervisor</a></li>
+                            <li><a href="{% url 'empregado:estagiario' %}">Estagiário</a></li>
+                            <li><a href="{% url 'empregado:bancodehoras' %}">Banco de Horas</a></li>
+                            <li><a href="{% url 'empregado:contact' %}">Contact</a></li>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="button special">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+        <script src="static/assets/js/jquery.min.js"></script>
+        <script src="static/assets/js/jquery.dropotron.min.js"></script>
+        <script src="static/assets/js/jquery.scrolly.min.js"></script>
+        <script src="static/assets/js/jquery.scrollgress.min.js"></script>
+        <script src="static/assets/js/skel.min.js"></script>
+        <script src="static/assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="static/assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="static/assets/js/main.js"></script>
+</body>

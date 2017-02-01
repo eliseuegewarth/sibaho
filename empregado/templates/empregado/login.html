@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'empregado:login' %}" method="post">
+{% csrf_token %}
+    <div>
+        <label>Nome de Usuário:</label>
+        <input type="text" name="nome_de_usuario" id="nome_de_usuario" required/>
+    </div>
+    <div>
+        <label>Senha:</label>
+        <input type="password" name="password" id="password" required/>
+    </div>
+    <div>
+        <input align="left" type="submit" value="Login" />
+
+        <a href="{% url 'empregado:criarSupervisor' %}" class="btn">Registrar</a>
+    </div>
+</form>

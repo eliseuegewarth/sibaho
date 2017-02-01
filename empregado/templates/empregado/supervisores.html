@@ -1,0 +1,46 @@
+{% if lista_supervisores %}
+    
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/changelists.css" />
+        
+    <script type="text/javascript" src="/siscop/admin/jsi18n/"></script>
+
+
+    <script type="text/javascript" src="/static/admin/js/core.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+    <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+    <div class="results">
+        <table id="result_list">
+            <thead>
+                <tr>
+                    <div>
+                        <th scope="col"  class="column-__str__">
+                           <div class="text"><span>supervisores</span></div>
+                        </th>
+                    </div>
+                </tr>
+            </thead>
+            <tbody>
+                {% for supervisor in lista_supervisores %}
+                    <tr class="row{{supervisor.id}}">
+                        <th class="field-__str__">
+                            <a href="{% url 'empregado:supervisor' supervisor.id %}">{{ supervisor.nome_completo }}</a>
+                        </th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% else %}
+    <p>Nenhum supervisor registrado.</p>
+{% endif %}
+
+<a href="{% url 'empregado:criarSupervisor' %}">Criar novo Supervisor</a>
