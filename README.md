@@ -2,13 +2,13 @@
 Sistema de Banco de Horas
 
 #Sumário
-* [Dependências](https://github.com/eliseuegewarth/sibaho/new/master?readme=1#dependências)
-* [Configuração de Ambiente](https://github.com/eliseuegewarth/sibaho/new/master?readme=1#configuração-de-ambiente)
+* [Dependências](https://github.com/eliseuegewarth/sibaho/tree/master#dependências)
+* [Configuração de Ambiente](https://github.com/eliseuegewarth/sibaho/tree/master#configuração-de-ambiente)
 
 #Dependências
 
 * [Python 3.5](https://www.python.org/downloads/release/python-350/)
-* Django 1.10.4 [Configuração de Ambiente](https://github.com/eliseuegewarth/sibaho/new/master?readme=1#configuração-de-ambiente)
+* Django 1.10.4 [Configuração de Ambiente](https://github.com/eliseuegewarth/sibaho/tree/master#configuração-de-ambiente)
 * [Virtualenv](https://virtualenv.pypa.io/en/stable/installation/)
 * [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html)
 
