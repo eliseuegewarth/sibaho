@@ -37,7 +37,6 @@ def supervisores(request):
 
 def supervisor(request, supervisor_id):
     supervisor = get_object_or_404(Supervisor, pk = supervisor_id)
-    #lista_estagiarios = Estagiario.objects.order_by('nome_completo')
     return render(request, 'empregado/supervisor.html', {'supervisor': supervisor})
 
 def criarSupervisor(request):
@@ -60,8 +59,12 @@ def criarSupervisor(request):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('empregado:supervisores'))
 
-def estagiario(request):
-    return HttpResponse("<html><title>Estagiarios</title><body>Here, will be displayed a list of estagiarios.</body></html>")
+def estagiarios(request):
+    return render(request, 'empregado/estagiarios.html')
+
+def estagiario(request, estagiario_id):
+    estagiario = get_object_or_404(Estagiario, pk = estagiario_id)
+    return render(request, 'empregado/estagiario.html')
 
 def criarEstagiario(request):
     return HttpResponse("<html><title>Novo Estagiario</title><body>Hello, world. You're at the empregado index.</body></html>")

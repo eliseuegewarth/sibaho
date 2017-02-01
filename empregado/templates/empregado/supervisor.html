@@ -1,8 +1,20 @@
-<h1>Supervisor</h1>
-Nome Completo: {{supervisor}}
-<br>
-Nome de Usuário: {{supervisor.nome_de_usuario}}
-<br>
-E-mail: {{supervisor.email}}
-<br>
-<br><a href="{% url 'empregado:supervisores' %}">Voltar para a tela de Supervisores</a>
+{% extends 'empregado/base.html' %}
+
+{% block content %}
+    <div class="content">
+        <h1>Supervisor</h1>
+        Nome Completo: {{supervisor}}
+        <br>
+        Nome de Usuário: {{supervisor.nome_de_usuario}}
+        <br>
+        E-mail: {{supervisor.email}}
+        <br>
+        <div class="list">
+            {% for estagiario in supervisor.estagiario_set.all %}
+                <a href="{% url 'empregado:estagiario' estagiario.id %}">{{estagiario}}</a>
+                <br>
+            {% endfor %}
+        </div>
+        <br><a href="{% url 'empregado:supervisores' %}">Voltar para a tela de Supervisores</a>
+    </div>
+{% endblock %}

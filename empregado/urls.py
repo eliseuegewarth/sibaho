@@ -9,8 +9,9 @@ urlpatterns = [
     url(r'^supervisores/$', views.supervisores, name='supervisores'),
     url(r'^supervisores/(?P<supervisor_id>[0-9]+)/$', views.supervisor, name='supervisor'),
     url(r'^supervisores/create/$', views.criarSupervisor, name='criarSupervisor'),
-    url(r'^estagiarios$', views.estagiario, name='estagiario'),
-    url(r'^estagiarios/new/$', views.criarEstagiario, name='criarEstagiario'),
+    url(r'^estagiarios$', views.estagiarios, name='estagiarios'),
+    url(r'^estagiarios/(?P<estagiario_id>[0-9]+)$', views.estagiario, name='estagiario'),
+    url(r'^estagiarios/create/$', views.criarEstagiario, name='criarEstagiario'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^bancodehoras/$', views.bancodehoras, name='bancodehoras'),
 ]
