@@ -1,5 +1,6 @@
-from django.db import models
 from datetime import datetime
+from django.db import models
+from django.utils import timezone
 
 class Empregado(models.Model):
     nome_completo = models.CharField(max_length=100)
@@ -37,4 +38,4 @@ class TurnoDeTrabalho(models.Model):
         else:
             horas_de_trabalho = (timezone.now() - self.entrada)
 
-        return str(horas_de_trabalho)
+        return (':'.join(str(horas_de_trabalho).split(':')[:2]))
