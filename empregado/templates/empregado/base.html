@@ -1,43 +1,88 @@
-<body>
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-    <div class="page-header">
-        <h1><a class="button" href="/">SiBaHo <span>Sistema de Banco de Horas</span></a></h1>
-    </div>
-    <div id="page-wrapper">
-        <header id="header" class="alt">
-            <nav id="nav">
-                <ul>
-                    <li class="current"><a href="{% url 'empregado:index' %}">Bem Vindo </a></li>
-                    <li class="submenu">
-                        <a href="#">Site</a>
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+    <head>
+        <title>SiBaHo</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="{% static 'assets/js/ie/html5shiv.js' %}"></script><![endif]-->
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="{% static 'assets/css/ie8.css' %}" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="{% static 'assets/css/ie9.css' %}" /><![endif]-->
+    </head>
+    <body class="index">
+        <div id="page-wrapper">
+
+            <!-- Header -->
+                <header id="header" class="alt">
+                    <h1 id="logo"><a href="{% url 'empregado:index' %}">SiBaHo <span>Sistema de Banco de Horas</span></a></h1>
+                    <nav id="nav">
                         <ul>
-                            <li><a href="{% url 'empregado:supervisores' %}">Supervisor</a></li>
-                            <li><a href="{% url 'empregado:estagiarios' %}">Estagiário</a></li>
-                            <li><a href="{% url 'empregado:bancodehoras' %}">Banco de Horas</a></li>
-                            <li><a href="{% url 'empregado:contact' %}">Contact</a></li>
+                            {% if user %}
+                                <li class="current"><a href="{% url 'empregado:index' %}">Bem Vindo {{user.name}}</a></li>
+                            {% else %}
+                                <li class="current"><a href="{% url 'empregado:index' %}">Bem Vindo Usuário</a></li>
+                            {% endif %}
+                            <li class="submenu">
+                                <a href="{% url 'empregado:index' %}">Site</a>
+                                <ul>
+                                    <li><a href="{% url 'empregado:supervisores' %}">Supervisor</a></li>
+                                    <li><a href="{% url 'empregado:estagiarios' %}">Estagiário</a></li>
+                                    <li><a href="{% url 'empregado:bancodehoras' %}">Banco de Horas</a></li>
+                                    <li><a href="{% url 'empregado:contact' %}">Contact</a></li>
+                                <!--    <li class="submenu">-->
+                                <!--        <a href="#">Submenu</a>-->
+                                <!--        <ul>-->
+                                <!--            <li><a href="#">Dolore Sed</a></li>-->
+                                <!--            <li><a href="#">Consequat</a></li>-->
+                                <!--            <li><a href="#">Lorem Magna</a></li>-->
+                                <!--            <li><a href="#">Sed Magna</a></li>-->
+                                <!--            <li><a href="#">Ipsum Nisl</a></li>-->
+                                <!--        </ul>-->
+                                    </li>
+                                </ul>
                             </li>
+                            <li><a href="#" class="button special">Login</a></li>
                         </ul>
-                    </li>
-                    <li><a href="#" class="button special">Login</a></li>
-                </ul>
-            </nav>
-        </header>
-    </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
+                    </nav>
+                </header>
+
+                <div class="content container">
+                    <div class="row">
+                        <div class="col-md-8">
+                        {% block content %}
+                        {% endblock %}
+                        </div>
+                    </div>
+                </div>
+              <!-- Footer -->
+                <footer id="footer">
+
+                    <ul class="icons">
+                        <li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
+                        <li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
+                        <li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+                    </ul>
+
+                    <ul class="copyright">
+                        <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+
+                </footer>
+
         </div>
-    </div>
-    <!-- Scripts -->
-        <script src="static/assets/js/jquery.min.js"></script>
-        <script src="static/assets/js/jquery.dropotron.min.js"></script>
-        <script src="static/assets/js/jquery.scrolly.min.js"></script>
-        <script src="static/assets/js/jquery.scrollgress.min.js"></script>
-        <script src="static/assets/js/skel.min.js"></script>
-        <script src="static/assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="static/assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="static/assets/js/main.js"></script>
-</body>
+
+        <!-- Scripts -->
+            <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+            <script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+            <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+            <script src="{% static 'assets/js/jquery.scrollgress.min.js' %}"></script>
+            <script src="{% static 'assets/js/skel.min.js' %}"></script>
+            <script src="{% static 'assets/js/util.js' %}"></script>
+            <!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+            <script src="{% static 'assets/js/main.js' %}"></script>
+
+    </body>
+</html>
