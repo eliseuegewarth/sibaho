@@ -3,6 +3,32 @@
 
 {% block content %}
 
-    <!-- html content -->
+    {% if lista_supervisores %}
+        
+        <section id="banner">
+
+            <div class="inner">
+
+                <header>
+                    <h2>Estagiários</h2>
+                </header>
+                <footer>
+                    {% for estagiario in lista_estagiarios %}
+                        <ul class="buttons vertical">
+                            <li><a href="{% url 'empregado:estagiario' estagiario.id %}" class="button fit scrolly">{{estagiario.nome_completo}}</a></li>
+                        </ul>
+                    {% endfor %}
+
+                </footer>
+
+            </div>
+
+        </section>
+    {% else %}
+        <p>Nenhum estagiario registrado.</p>
+    {% endif %}
+    <ul class="buttons vertical">
+        <li><a href="{% url 'empregado:criarEstagiario' %}" class="button special fit scrolly">Criar Estagiário</a></li>
+    </ul>
 
 {% endblock %}

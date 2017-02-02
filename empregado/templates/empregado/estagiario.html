@@ -2,7 +2,39 @@
 {% load static %}
 
 {% block content %}
+    <section id="banner">
 
-    <!-- html content -->
+        <div class="inner">
 
+            <header>
+                <h2>Estagiário</h2>
+            </header>
+            <p>
+                <strong>Nome Completo:</strong> {{estagiario}}
+            </p>
+            <p>
+                <strong>Nome de Usuário:</strong> {{estagiario.nome_de_usuario}}
+            </p>
+            <p>
+                <strong>E-mail:</strong> {{estagiario.email}}
+            </p>
+            <footer>
+                {% for turnodetrabalho in estagiario.turnodetrabalho_set.all %}
+                    <ul class="buttons vertical">
+                        <li><a href="{% url 'empregado:turnodetrabalho' estagiario.id turnodetrabalho.id %}" class="button fit scrolly">{{turnodetrabalho}} <span>{{turnodetrabalho.horasTrabalhadas}}</span></a></li>
+                    </ul>
+                {% endfor %}
+
+                <ul class="buttons vertical">
+                    <li><a href="{% url 'empregado:criarEstagiario' %}" class="button special fit scrolly">Registrar Entrada</a></li>
+                </ul>
+
+            </footer>
+
+        </div>
+
+    </section>
+    <ul class="buttons vertical">
+        <li><a href="{% url 'empregado:estagiarios' %}" class="button fit scrolly">Voltar para a tela de Estagiários</a></li>
+    </ul>
 {% endblock %}

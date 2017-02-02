@@ -11,23 +11,22 @@
             </header>
             <p>
                 <strong>Nome Completo:</strong> {{supervisor}}
-                <br />
+            </p>
+            <p>
                 <strong>Nome de Usuário:</strong> {{supervisor.nome_de_usuario}}
-                <br />
+            </p>
+            <p>
                 <strong>E-mail:</strong> {{supervisor.email}}
-                <br />
             </p>
             <footer>
                 {% for estagiario in supervisor.estagiario_set.all %}
                     <ul class="buttons vertical">
                         <li><a href="{% url 'empregado:estagiario' estagiario.id %}" class="button fit scrolly">{{estagiario}}</a></li>
-                        <br>
                     </ul>
                 {% endfor %}
 
                 <ul class="buttons vertical">
-                    <li><a href="{% url 'empregado:criarEstagiario' %}" class="button fit scrolly">Criar Estagiário</a></li>
-                    <br>
+                    <li><a href="{% url 'empregado:criarEstagiario' %}" class="button special fit scrolly">Criar Estagiário</a></li>
                 </ul>
 
             </footer>
@@ -35,5 +34,7 @@
         </div>
 
     </section>
-        <br><a href="{% url 'empregado:supervisores' %}">Voltar para a tela de Supervisores</a>
+    <ul class="buttons vertical">
+        <li><a href="{% url 'empregado:supervisores' %}" class="button fit scrolly">Voltar para a tela de Supervisores</a></li>
+    </ul>
 {% endblock %}
