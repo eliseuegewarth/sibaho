@@ -60,11 +60,13 @@ def criarSupervisor(request):
         return HttpResponseRedirect(reverse('empregado:supervisores'))
 
 def estagiarios(request):
-    return render(request, 'empregado/estagiarios.html')
+    lista_estagiarios = Estagiario.objects.order_by('nome_completo')
+    conteudo =  {'lista_estagiarios': lista_estagiarios}
+    return render(request, 'empregado/estagiarios.html', conteudo)
 
 def estagiario(request, estagiario_id):
     estagiario = get_object_or_404(Estagiario, pk = estagiario_id)
-    return render(request, 'empregado/estagiario.html')
+    return render(request, 'empregado/estagiario.html', {'estagiario': estagiario})
 
 def criarEstagiario(request):
     return HttpResponse("<html><title>Novo Estagiario</title><body>Hello, world. You're at the empregado index.</body></html>")
@@ -72,5 +74,5 @@ def criarEstagiario(request):
 def bancodehoras(request):
     return render(request, 'empregado/bancodehoras.html')
 
-def turnodetrabalho(request):
+def turnodetrabalho(request, estagiario_id, turnodetrabalho_id):
     return render(request, 'empregado/turnodetrabalho.html')
