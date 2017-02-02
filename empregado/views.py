@@ -5,7 +5,7 @@ from django.urls import reverse
 from .models import Supervisor, Estagiario
 
 def index(request):
-    return render(request, 'empregado/base.html')
+    return render(request, 'empregado/index.html')
 
 def contact(request):
     return render(request, 'empregado/base.html')
