@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^supervisores/create/$', views.criarSupervisor, name='criarSupervisor'),
     url(r'^estagiarios$', views.estagiarios, name='estagiarios'),
     url(r'^estagiarios/(?P<estagiario_id>[0-9]+)$', views.estagiario, name='estagiario'),
+    url(r'^estagiarios/(?P<estagiario_id>[0-9]+)/turnodetrabalho/(?P<turnodetrabalho_id>[0-9]+)$', views.turnodetrabalho, name='turnodetrabalho'),
     url(r'^estagiarios/create/$', views.criarEstagiario, name='criarEstagiario'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^bancodehoras/$', views.bancodehoras, name='bancodehoras'),
