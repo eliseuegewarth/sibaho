@@ -1,6 +1,15 @@
 from datetime import datetime
 from django.db import models
 from django.utils import timezone
+from django.core.validators import RegexValidator
+
+
+class RamalModel(models.Model):
+    regex_ramal = RegexValidator(regex=r'^\d{4}$', message="Numero de telefone precisa estar no formato: XXXX ")
+    numero_ramal = models.CharField(max_length=4, validators=[regex_ramal], blank=True)
+
+    def __str__(self):
+        return self.numero_ramal
 
 class Empregado(models.Model):
     nome_completo = models.CharField(max_length=100)
