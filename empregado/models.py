@@ -31,14 +31,14 @@ class Empregado(models.Model):
     class Meta:
         abstract = True
 
-
 class Supervisor(Empregado):
+    # Não precisa de nenhuma caracteristica diferente de Empregado
     pass
-
 
 class Estagiario(Empregado):
     supervisor = models.ForeignKey(Supervisor, on_delete=models.CASCADE)
-
+    inicio_do_contrato = models.DateField('Início Contrato')
+    previsao_termino_do_contrato = models.DateField('Previsão de Termino')
 
 class TurnoDeTrabalho(models.Model):    
     estagiario = models.ForeignKey(Estagiario, on_delete=models.CASCADE)
