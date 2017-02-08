@@ -16,11 +16,20 @@ class Empregado(models.Model):
     nome_de_usuario = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
-    REQUIRED_FIELDS = ['nome_completo', 'password', 'nome_de_usuario', 'email']
+    lotacao = models.CharField(max_length=100)
+    ramal = models.ForeignKey(RamalModel, on_delete=models.CASCADE)
+    REQUIRED_FIELDS = [
+        'nome_completo',
+        'password',
+        'nome_de_usuario',
+        'email',
+        'lotacao',
+        'ramal'
+    ]
     def __str__(self):
-            return self.nome_completo
+        return self.nome_completo
     class Meta:
-       abstract = True
+        abstract = True
 
 
 class Supervisor(Empregado):
