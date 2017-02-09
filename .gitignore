@@ -89,3 +89,7 @@ ENV/
 .ropeprojectdb.sqlite3
 
 db.sqlite3
+
+# Ignore images at logo_instituicao/
+
+**/logo_instituicao/*.png
