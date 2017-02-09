@@ -14,7 +14,7 @@ class RamalModel(models.Model):
 class Empregado(models.Model):
     nome_completo = models.CharField(max_length=100)
     nome_de_usuario = models.CharField(max_length=50)
-    email = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
     password = models.CharField(max_length=100)
     lotacao = models.CharField(max_length=100)
     ramal = models.ForeignKey(RamalModel, on_delete=models.CASCADE)
@@ -33,7 +33,6 @@ class Empregado(models.Model):
         return TurnoDeTrabalho.objects.filter(estagiario=self, data=date.today())
 
     def horasTrabalhadas_mes(self):
-        # [WARNING] data__month__gte will get more than one month if isn't the last of list
         turnos = self.turnos_mes_atual()
         quantidade_inicial = (date.today() - date.today());
         horas_trabalhadas = (quantidade_inicial)
