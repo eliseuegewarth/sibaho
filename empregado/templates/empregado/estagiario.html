@@ -19,9 +19,12 @@
                 <strong>E-mail:</strong> {{estagiario.email}}
             </p>
             <footer>
-                {% for turnodetrabalho in estagiario.turnodetrabalho_set.all %}
                     <ul class="buttons vertical">
-                        <li><a href="{% url 'empregado:turnodetrabalho' estagiario.id turnodetrabalho.id %}" class="button fit scrolly">{{turnodetrabalho}} <span>{{turnodetrabalho.horasTrabalhadas}}</span></a></li>
+                        <li><a href="{% url 'empregado:mes' estagiario.id data %}" class="button fit scrolly">Mês<p>{{data}}</p></a></li>
+                    </ul>
+                {% for turnodetrabalho in estagiario.turnodetrabalho_hoje %}
+                    <ul class="buttons vertical">
+                        <li><a href="{% url 'empregado:turnodetrabalho' estagiario.id turnodetrabalho.id %}" class="button fit scrolly">{{turnodetrabalho}} <span>{{turnodetrabalho.horasTrabalhadas_str}}</span></a></li>
                     </ul>
                 {% endfor %}
 
