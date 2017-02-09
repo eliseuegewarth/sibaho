@@ -1,6 +1,8 @@
-from django.shortcuts import get_object_or_404, render
+from datetime import date
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.utils import timezone
 
 from .models import Supervisor, Estagiario
 
@@ -66,7 +68,9 @@ def estagiarios(request):
 
 def estagiario(request, estagiario_id):
     estagiario = get_object_or_404(Estagiario, pk = estagiario_id)
-    return render(request, 'empregado/estagiario.html', {'estagiario': estagiario})
+    data = str(timezone.now().strftime('%Y-%m'))
+    conteudo = {'estagiario': estagiario, 'data': data}
+    return render(request, 'empregado/estagiario.html', conteudo)
 
 def criarEstagiario(request):
     return HttpResponse("<html><title>Novo Estagiario</title><body>Hello, world. You're at the empregado index.</body></html>")
@@ -76,3 +80,15 @@ def bancodehoras(request):
 
 def turnodetrabalho(request, estagiario_id, turnodetrabalho_id):
     return render(request, 'empregado/turnodetrabalho.html')
+
+def mes(request, estagiario_id, data):
+    return render(request, 'empregado/turnodetrabalho.html')
+
+def relatorio(request, estagiario_id):
+    estagiario = get_object_or_404(Estagiario, pk = estagiario_id)
+    data = str(date.today().strftime('%Y-%m'))
+    conteudo = { 'estagiario': estagiario,
+                 'data': data,
+                }
+
+    return render(request, 'empregado/relatorio_estagiario.html', conteudo)
