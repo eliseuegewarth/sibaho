@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+    {% load static %}
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>
+            Folha de Ponto {{estagiario.nome_completo}}
+        </title>
+        <link rel="stylesheet" href="{% static 'assets/css/basic.css' %}" />
+    </head>
+    <body>
+        <br>
+        <div class="tablewrapper">
+            <div class="table">
+                <div class="row">
+                    <div class="rowspanned cell">
+                        <img src="{% static 'logo_instituicao/64x64.png' %}" name="Image1" align="right" width="64" height="64" border="0"/>
+                    </div>
+                    <div class="cell">
+                        &nbsp; Senado Federal
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="empty cell"></div>
+                    <div class="cell">
+                        &nbsp; Secretaria de Gestão de Pessoas
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="empty cell"></div>
+                    <div class="cell">
+                        &nbsp; Serviço de Gestão de Estágios
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <p align="center">Folha de Ponto</p>
+        </div>
+        <div class="divInformacoes" style="width: 100%; border: 1px solid #000;">
+            <div class="divInformacoesBody">
+                <div class="divInformacoesRow">
+                    <div class="divInformacoesCell">&nbsp;Nome:</div>
+                    <div class="divInformacoesCell">&nbsp;{{estagiario.nome_completo}}</div>
+                </div>
+                <div class="divInformacoesRow">
+                    <div class="divInformacoesCell">&nbsp;Lotação/Telefone:</div>
+                    <div class="divInformacoesCell">&nbsp;{{estagiario.lotacao}} / {{estagiario.ramal}}</div>
+                </div>
+                <div class="divInformacoesRow">
+                    <div class="divInformacoesCell">&nbsp;Início Contrato: {{estagiario.inicio_do_contrato}}</div>
+                    <div class="divInformacoesCell">&nbsp;Previsão de Termino: {{estagiario.previsao_termino_do_contrato}}</div>
+                </div>
+                <div class="divInformacoesRow">
+                    <div class="divInformacoesCell">&nbsp;Supervisor:</div>
+                    <div class="divInformacoesCell">&nbsp;{{estagiario.supervisor}}</div>
+                </div>
+            </div>
+        </div>
+        <p align="center" style="margin-bottom: 0cm; line-height: 100%"><br/>
+        </p>
+        <div class="divHorarios" style="width: 100%; border: 1px solid #000;">
+            <div class="divHorariosBody">
+                <div class="divHorariosHead">
+                    <div class="divHorariosCell">&nbsp;Dia</div>
+                    <div class="divHorariosCell">&nbsp;Entrada</div>
+                    <div class="divHorariosCell">&nbsp;Saida</div>
+                </div>
+                {% for turno in estagiario.turnos_mes_atual %}
+                    <div class="divHorariosRow">
+                        <div class="divHorariosCell">&nbsp;{{turno}}</div>
+                        <div class="divHorariosCell">&nbsp;{{turno.entrada_str}}</div>
+                        <div class="divHorariosCell">&nbsp;{{turno.saida_str}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <p align="center">…………………………………</p>
+        </div>
+        <div>
+            <p align="center">Assinatura do Responsável</p>
+        </div>
+    </body>
+</html>
