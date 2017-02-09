@@ -1,0 +1,90 @@
+@page { margin-left: 2cm; margin-right: 2.5cm; margin-top: 1.5cm; margin-bottom: 1.5cm }
+		td p { margin-bottom: 0cm }
+		th p { margin-bottom: 0cm; font-weight: normal; text-align: left }
+		a:link { so-language: zxx }
+
+/* Cabeçalho */
+.tablewrapper {
+  position: relative;
+}
+.table {
+  display: table;
+}
+.row {
+  display: table-row;
+}
+.cell {
+  display: table-cell;
+}
+.cell.empty
+{
+  border: none;
+  width: 70px;
+}
+.cell.rowspanned {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 70px;
+}
+
+/* Tabela de Informações */
+.divInformacoes{
+	display: table;
+	width: 100%;
+}
+.divInformacoesRow {
+	display: table-row;
+}
+.divInformacoesHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divInformacoesCell, .divInformacoesHead {
+	border: 1px solid #000000;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divInformacoesHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divInformacoesFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divInformacoesBody {
+	display: table-row-group;
+}
+
+/* Tabela de Horários */
+.divHorarios{
+	display: table;
+	width: 100%;
+}
+.divHorariosRow {
+	display: table-row;
+}
+.divHorariosHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divHorariosCell {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divHorariosFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divHorariosHead {
+	display: table-row;
+	font-weight: bolder;
+}
+.divHorariosBody {
+	display: table-row-group;
+}
