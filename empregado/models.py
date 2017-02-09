@@ -28,6 +28,28 @@ class Empregado(models.Model):
     ]
     def __str__(self):
         return self.nome_completo
+
+    def turnodetrabalho_hoje(self):
+        return TurnoDeTrabalho.objects.filter(estagiario=self, data=date.today())
+
+    def horasTrabalhadas_mes(self):
+        # [WARNING] data__month__gte will get more than one month if isn't the last of list
+        turnos = self.turnos_mes_atual()
+        quantidade_inicial = (date.today() - date.today());
+        horas_trabalhadas = (quantidade_inicial)
+
+        for turno in turnos:
+            horas_trabalhadas = horas_trabalhadas + turno.horasTrabalhadas()
+        return (':'.join(str(horas_trabalhadas).split(':')[:2]))
+
+    def turnos_mes_atual(self):
+        turnos = self.turnos_mes(date.today().month)
+        return turnos;
+
+    def turnos_mes(self, mes):
+        turnos = TurnoDeTrabalho.objects.filter(estagiario=self, data__month__gte=mes, data__month__lte=mes).order_by('data')
+        return turnos;
+
     class Meta:
         abstract = True
 
@@ -48,7 +70,7 @@ class TurnoDeTrabalho(models.Model):
     REQUIRED_FIELDS = ['estagiario', 'data', 'entrada']
     
     def __str__(self):
-        return str(self.data)
+        return str(self.data.strftime('%d/%b'))
 
     def horasTrabalhadas(self):
         if(self.saida != None):
@@ -56,4 +78,26 @@ class TurnoDeTrabalho(models.Model):
         else:
             horas_de_trabalho = (timezone.now() - self.entrada)
 
-        return (':'.join(str(horas_de_trabalho).split(':')[:2]))
+        return (horas_de_trabalho)
+
+    def horasTrabalhadas_str(self):
+        return (':'.join(str(self.horasTrabalhadas()).split(':')[:2]))
+
+    def data_str(self):
+        return str(self.data.strftime('%Y-%m'))
+
+    def hora_str(self, hora):
+        return str(hora.strftime('%H:%M'))
+
+    def entrada_str(self):
+        return self.hora_str(self.entrada)
+
+    def saida_str(self):
+        str_saida = ""
+        if(self.saida!=None):
+            str_saida = self.hora_str(self.saida)
+        else:
+            # Do Nothing
+            pass
+
+        return str_saida
