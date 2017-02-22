@@ -23,6 +23,7 @@ STATIC_ROOT = '/static/'
 
 INSTALLED_APPS = [
     'empregado.apps.EmpregadoConfig',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
