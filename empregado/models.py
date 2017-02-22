@@ -7,6 +7,7 @@ from django.core.validators import RegexValidator
 class RamalModel(models.Model):
     regex_ramal = RegexValidator(regex=r'^\d{4}$', message="Numero de telefone precisa estar no formato: XXXX ")
     numero_ramal = models.CharField(max_length=4, validators=[regex_ramal], blank=True)
+    REQUIRED_FIELDS = ['numero_ramal',]
 
     def __str__(self):
         return self.numero_ramal
@@ -61,13 +62,25 @@ class Estagiario(Empregado):
     inicio_do_contrato = models.DateField('Início Contrato')
     previsao_termino_do_contrato = models.DateField('Previsão de Termino')
 
-class TurnoDeTrabalho(models.Model):    
+class BancoDeHoras(models.Model):
+    estagiario = models.OneToOneField(Estagiario, blank=False, on_delete=models.CASCADE)
+    saldo_de_horas = models.DurationField(null=False, default=0)
+    saldo_de_horas_mes_atual = models.DurationField(null=False, default=0)
+
+    def __str__(self):
+        return 'Banco De Horas de ' + str(self.estagiario)
+
+    def atualiza_saldo(self):
+        for turno in self.estagiario.turnos_mes_atual():
+            saldo_de_horas_mes_atual = saldo_de_horas_mes_atual + turno.horasTrabalhadas
+
+class TurnoDeTrabalho(models.Model):
     estagiario = models.ForeignKey(Estagiario, on_delete=models.CASCADE)
     data = models.DateField('dia')
     entrada = models.DateTimeField('entrada')
     saida = models.DateTimeField('saida', blank=True, null=True)
     REQUIRED_FIELDS = ['estagiario', 'data', 'entrada']
-    
+
     def __str__(self):
         return str(self.data.strftime('%d/%b'))
 
